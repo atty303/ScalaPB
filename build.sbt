@@ -52,7 +52,7 @@ scalacOptions in ThisBuild ++= Seq("-deprecation",  "-target:jvm-1.8")
 
 javacOptions in ThisBuild ++= List("-target", "8", "-source", "8")
 
-organization in ThisBuild := "com.thesamet.scalapb"
+organization in ThisBuild := "io.github.CyberAgent"
 
 resolvers in ThisBuild +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -101,7 +101,7 @@ lazy val root: Project =
       grpcRuntime,
       compilerPlugin,
       compilerPluginShaded,
-      proptest,
+//      proptest,
       scalapbc
     )
 
