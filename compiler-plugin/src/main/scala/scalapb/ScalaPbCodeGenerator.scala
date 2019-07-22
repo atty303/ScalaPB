@@ -23,7 +23,7 @@ object ScalaPbCodeGenerator extends ProtocCodeGenerator {
 
   override def suggestedDependencies: Seq[Artifact] = Seq(
     Artifact(
-      "com.thesamet.scalapb",
+      "io.github.CyberAgent",
       "scalapb-runtime",
       scalapb.compiler.Version.scalapbVersion,
       crossVersion = true
