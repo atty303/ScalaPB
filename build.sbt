@@ -94,9 +94,9 @@ lazy val root: Project =
       publishLocal := {},
     )
     .aggregate(
-      lensesJS,
+//      lensesJS,
       lensesJVM,
-      runtimeJS,
+//      runtimeJS,
       runtimeJVM,
       grpcRuntime,
       compilerPlugin,
@@ -107,7 +107,7 @@ lazy val root: Project =
 
 // fastparse 2 is not available for Scala Native yet
 // https://github.com/lihaoyi/fastparse/issues/215
-lazy val runtime = crossProject(JSPlatform, JVMPlatform/*, NativePlatform*/)
+lazy val runtime = crossProject(/*JSPlatform, */JVMPlatform/*, NativePlatform*/)
   .crossType(CrossType.Full).in(file("scalapb-runtime"))
   .settings(
     name := "scalapb-runtime",
@@ -158,6 +158,7 @@ lazy val runtime = crossProject(JSPlatform, JVMPlatform/*, NativePlatform*/)
               else Nil
     )
   )
+/*
   .jsSettings(
     // Add JS-specific settings here
     scalacOptions += {
@@ -167,6 +168,7 @@ lazy val runtime = crossProject(JSPlatform, JVMPlatform/*, NativePlatform*/)
     },
     unmanagedResourceDirectories in Compile += baseDirectory.value / "../../third_party"
   )
+*/
 /*
   .nativeSettings(
     sharedNativeSettings
@@ -175,7 +177,7 @@ lazy val runtime = crossProject(JSPlatform, JVMPlatform/*, NativePlatform*/)
 
 
 lazy val runtimeJVM    = runtime.jvm
-lazy val runtimeJS     = runtime.js
+//lazy val runtimeJS     = runtime.js
 //lazy val runtimeNative = runtime.native
 
 lazy val grpcRuntime = project.in(file("scalapb-runtime-grpc"))
@@ -378,7 +380,7 @@ createVersionFile := {
 }
 
 
-lazy val lenses = crossProject(JSPlatform, JVMPlatform/*, NativePlatform*/).in(file("lenses"))
+lazy val lenses = crossProject(/*JSPlatform,*/ JVMPlatform/*, NativePlatform*/).in(file("lenses"))
   .settings(
     name := "lenses",
     unmanagedSourceDirectories in Compile ++= {
@@ -402,6 +404,7 @@ lazy val lenses = crossProject(JSPlatform, JVMPlatform/*, NativePlatform*/).in(f
       )
     }
   )
+/*
   .jsSettings(
     scalacOptions += {
       val a = (baseDirectory in LocalRootProject).value.toURI.toString
@@ -409,6 +412,7 @@ lazy val lenses = crossProject(JSPlatform, JVMPlatform/*, NativePlatform*/).in(f
       s"-P:scalajs:mapSourceURI:$a->$g/"
     }
   )
+*/
 /*
   .nativeSettings(
     sharedNativeSettings
@@ -416,7 +420,7 @@ lazy val lenses = crossProject(JSPlatform, JVMPlatform/*, NativePlatform*/).in(f
 */
 
 lazy val lensesJVM = lenses.jvm
-lazy val lensesJS = lenses.js
+//lazy val lensesJS = lenses.js
 //lazy val lensesNative = lenses.native
 
 lazy val docs = project.in(file("docs"))
