@@ -1,4 +1,4 @@
-sonatypeProfileName := "com.thesamet"
+sonatypeProfileName := "io.github.CyberAgent"
 
 pomExtra in Global := {
   <url>https://github.com/scalapb/ScalaPB</url>
